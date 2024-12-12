@@ -7,11 +7,16 @@ Rails.application.routes.draw do
   # new_booking post "rooms/:id/book", to: "bookings#create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+
+    get "style", to: "pages#style"
+
+    resources :users
     resources :rooms, only: [:index, :show] do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :show]
+       
 
     post 'book', to: 'bookings#create', on: :member
-    
+
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
